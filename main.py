@@ -14,7 +14,6 @@ class Paint(ctk.CTk):
         self.title('')
         self.iconbitmap('empty.ico')
 
-
         DrawSurface(self).pack(fill='both', expand=True)
         ToolPanel(self)
 
