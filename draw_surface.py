@@ -4,17 +4,18 @@ from settings import *
 
 
 class DrawSurface(tk.Canvas):
-    def __init__(self, parent):
+    def __init__(self, parent, brush_size_var, color_string):
         # Initialize the Canvas with specific settings
         super().__init__(master=parent,
-                         bg=CANVS_BG,
+                         bg=CANVAS_BG,
                          borderwidth=0,
                          highlightthickness=0)
+        self.pack(fill='both', expand=True)
+        self.brush_size_var = brush_size_var
+        self.color_string = color_string
 
         # Initialize drawing parameters
         self.drawing = False
-        self.color = "black"
-        self.brush_size = 5
 
         # Variables to store the last mouse position
         self.last_x = None
@@ -40,8 +41,8 @@ class DrawSurface(tk.Canvas):
             self.last_y = event.y
 
     def draw_line(self, x1, y1, x2, y2):
-        brush_size = self.brush_size
-        color = self.color
+        brush_size = self.brush_size_var.get()
+        color = self.color_string.get()
         # Create a line between two points
         self.create_line(x1, y1, x2, y2, fill=color, width=brush_size, capstyle='round')
 
@@ -51,3 +52,6 @@ class DrawSurface(tk.Canvas):
 
         self.last_x = None
         self.last_y = None
+
+    def clear_screen(self):
+        self.delete('all')

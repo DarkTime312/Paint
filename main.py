@@ -14,8 +14,24 @@ class Paint(ctk.CTk):
         self.title('')
         self.iconbitmap('empty.ico')
 
-        DrawSurface(self).pack(fill='both', expand=True)
-        ToolPanel(self)
+        # variables
+        self.brush_size_var = ctk.IntVar(value=20)
+        self.color_string = ctk.StringVar(value='#000')
+        self.brush_is_on = ctk.BooleanVar(value=True)
+
+        self.bind('<MouseWheel>', self.change_brush_size)
+
+        self.draw_surface = DrawSurface(self, self.brush_size_var, self.color_string)
+        self.tool_panel = ToolPanel(self, self.draw_surface, self.brush_size_var, self.color_string, self.brush_is_on)
+
+        self.brush_size_var.trace('w', self.tool_panel.brush_preview.draw_circle)
+        self.color_string.trace('w', self.tool_panel.brush_preview.draw_circle)
+
+    def change_brush_size(self, event):
+        if event.delta > 0:
+            self.brush_size_var.set(self.brush_size_var.get() + 5)
+        else:
+            self.brush_size_var.set(self.brush_size_var.get() - 5)
 
 
 if __name__ == '__main__':
