@@ -2,6 +2,7 @@ import customtkinter as ctk
 from settings import *
 from PIL import Image
 
+
 class ToolPanel(ctk.CTkToplevel):
     def __init__(self, parent):
         super().__init__(master=parent)
@@ -15,6 +16,7 @@ class ToolPanel(ctk.CTkToplevel):
         self.resizable(False, False)
 
         self.set_layout()
+
         ColorSlides(self)
         BrushPreview(self)
         ColorButtons(self)
