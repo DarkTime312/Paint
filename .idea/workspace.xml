@@ -121,8 +121,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.main" />
-        <item itemvalue="Python.tool_panel" />
         <item itemvalue="Python.draw_surface" />
+        <item itemvalue="Python.tool_panel" />
       </list>
     </recent_temporary>
   </component>
@@ -182,7 +182,15 @@
       <option name="project" value="LOCAL" />
       <updated>1719877850841</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="0.6">
+      <option name="closed" value="true" />
+      <created>1719926469567</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1719926469567</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -190,6 +198,7 @@
     <MESSAGE value="0.01" />
     <MESSAGE value="0.2" />
     <MESSAGE value="0.5" />
-    <option name="LAST_COMMIT_MESSAGE" value="0.5" />
+    <MESSAGE value="0.6" />
+    <option name="LAST_COMMIT_MESSAGE" value="0.6" />
   </component>
 </project>
