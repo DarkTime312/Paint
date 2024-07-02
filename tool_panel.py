@@ -9,10 +9,13 @@ class ToolPanel(ctk.CTkToplevel):
         self.parent = parent
 
         # window setup
-        self.geometry('200x300+220+220')
+        self.geometry('200x300+1020+200')
         self.title('')
         self.attributes('-topmost', True)
         self.resizable(False, False)
+
+        # A binding to close the main app if the ToolPanel is closed
+        self.bind("<Destroy>", lambda e: self.quit())
 
         # setting light mode
         ctk.set_appearance_mode('light')
@@ -197,10 +200,10 @@ class BrushSizeSlider(ctk.CTkFrame):
 
 
 class ActionButtons(ctk.CTkFrame):
-    def __init__(self, parent, brush_is_on, color_string):
+    def __init__(self, parent, is_brush_active, color_string):
         super().__init__(master=parent, fg_color='transparent')
         self.parent = parent
-        self.brush_is_on = brush_is_on
+        self.is_brush_active = is_brush_active
         self.color_string = color_string
         self.last_color = None
         self.parent.bind('<<activate_brush>>', lambda e: self.activate_brush())
@@ -239,8 +242,8 @@ class ActionButtons(ctk.CTkFrame):
                       command=self.clear_canvas).pack(side='right', padx=(5, 0))
 
     def activate_brush(self):
-        self.brush_is_on.set(True)
-        # If there's already a color saved
+        self.is_brush_active.set(True)
+        # If there's already a saved color, activate it
         if self.last_color:
             self.color_string.set(self.last_color)
         # Change the brush button color to active
@@ -249,12 +252,18 @@ class ActionButtons(ctk.CTkFrame):
         self.eraser_button.configure(fg_color=BUTTON_COLOR)
 
     def activate_eraser(self):
-        self.brush_is_on.set(False)
+        self.is_brush_active.set(False)
+        # Change the eraser button color to active color
         self.eraser_button.configure(fg_color=BUTTON_ACTIVE_COLOR)
+        # Change the brush button color to not active color
         self.brush_btn.configure(fg_color=BUTTON_COLOR)
+        # Save the color
         self.last_color = self.color_string.get()
+        # Change the brush color to the background color
         self.color_string.set(CANVAS_BG)
 
     def clear_canvas(self):
+        # Generate an event that will clear the canvas
         self.event_generate('<<ClearCanvas>>')
+        # Set the brush as active
         self.activate_brush()
