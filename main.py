@@ -17,15 +17,13 @@ class Paint(ctk.CTk):
         # variables
         self.brush_size_var = ctk.IntVar(value=20)
         self.color_string = ctk.StringVar(value='#000')
-        self.brush_is_on = ctk.BooleanVar(value=True)
+        self.is_brush_active = ctk.BooleanVar(value=True)
 
         self.bind('<MouseWheel>', self.change_brush_size)
 
-        self.draw_surface = DrawSurface(self, self.brush_size_var, self.color_string)
-        self.tool_panel = ToolPanel(self, self.draw_surface, self.brush_size_var, self.color_string, self.brush_is_on)
-
-        self.brush_size_var.trace('w', self.tool_panel.brush_preview.draw_circle)
-        self.color_string.trace('w', self.tool_panel.brush_preview.draw_circle)
+        DrawSurface(self, self.brush_size_var, self.color_string)
+        ToolPanel(self, self.brush_size_var, self.color_string,
+                  self.is_brush_active)
 
     def change_brush_size(self, event):
         if event.delta > 0:

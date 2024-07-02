@@ -1,9 +1,8 @@
 import customtkinter as ctk
-import tkinter as tk
 from settings import *
 
 
-class DrawSurface(tk.Canvas):
+class DrawSurface(ctk.CTkCanvas):
     def __init__(self, parent, brush_size_var, color_string):
         # Initialize the Canvas with specific settings
         super().__init__(master=parent,
@@ -11,6 +10,7 @@ class DrawSurface(tk.Canvas):
                          borderwidth=0,
                          highlightthickness=0)
         self.pack(fill='both', expand=True)
+        self.parent = parent
         self.brush_size_var = brush_size_var
         self.color_string = color_string
 
@@ -25,6 +25,8 @@ class DrawSurface(tk.Canvas):
         self.bind('<Button-1>', self.start_drawing)
         self.bind('<B1-Motion>', self.draw)
         self.bind('<ButtonRelease-1>', self.stop_drawing)
+
+        self.bind_all('<<ClearCanvas>>', self.clear_screen)
 
     def start_drawing(self, event):
         self.drawing = True
@@ -53,5 +55,5 @@ class DrawSurface(tk.Canvas):
         self.last_x = None
         self.last_y = None
 
-    def clear_screen(self):
+    def clear_screen(self, event=None):
         self.delete('all')

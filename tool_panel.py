@@ -4,14 +4,20 @@ from PIL import Image
 
 
 class ToolPanel(ctk.CTkToplevel):
-    def __init__(self, parent, draw_surface, brush_size, color_string, brush_is_on):
+    def __init__(self, parent, brush_size, color_string, brush_is_on):
         super().__init__(master=parent)
         self.brush_is_on = brush_is_on
-        self.draw_surface = draw_surface
+        # self.draw_surface = draw_surface
         self.brush_size_var = brush_size
         self.color_string = color_string
+        self.parent = parent
         # setting light mode
         ctk.set_appearance_mode('light')
+
+        self.red_var = ctk.IntVar()
+        self.green_var = ctk.IntVar()
+        self.blue_var = ctk.IntVar()
+
         # window setup
         self.geometry('200x300+220+220')
         self.title('')
@@ -20,11 +26,26 @@ class ToolPanel(ctk.CTkToplevel):
 
         self.set_layout()
 
-        self.color_slides = ColorSlides(self, self.color_string, brush_is_on)
-        self.brush_preview = BrushPreview(self, self.brush_size_var, self.color_string, self.brush_is_on)
-        ColorButtons(self, color_string, self.color_slides)
-        BrushSizeSlider(self, self.brush_size_var)
-        self.action_buttons = ActionButtons(self, self.draw_surface, self.brush_is_on, color_string)
+        ColorSlides(self,
+                    self.color_string,
+                    brush_is_on,
+                    self.red_var,
+                    self.green_var,
+                    self.blue_var)
+        BrushPreview(self,
+                     self.brush_size_var,
+                     self.color_string,
+                     self.brush_is_on)
+        ColorButtons(self,
+                     color_string,
+                     self.red_var,
+                     self.green_var,
+                     self.blue_var)
+        BrushSizeSlider(self,
+                        self.brush_size_var)
+        ActionButtons(self,
+                      self.brush_is_on,
+                      color_string)
 
     def set_layout(self):
         self.rowconfigure(0, weight=2, uniform='a')
@@ -37,15 +58,16 @@ class ToolPanel(ctk.CTkToplevel):
 
 
 class ColorSlides(ctk.CTkFrame):
-    def __init__(self, parent, color_string, brush_is_on):
+    def __init__(self, parent, color_string, brush_is_on, red_var, green_var, blue_var):
         super().__init__(master=parent)
         self.grid(row=0, column=0, padx=(5, 30))
         self.color_string = color_string
         self.brush_is_on = brush_is_on
         self.parent = parent
-        self.red_var = ctk.IntVar()
-        self.green_var = ctk.IntVar()
-        self.blue_var = ctk.IntVar()
+
+        self.red_var = red_var
+        self.green_var = green_var
+        self.blue_var = blue_var
 
         self.red_slider = ctk.CTkSlider(self,
                                         button_color=SLIDER_RED,
@@ -75,7 +97,8 @@ class ColorSlides(ctk.CTkFrame):
         self.blue_slider.pack(pady=5)
 
     def update_color(self, *args):
-        self.parent.action_buttons.activate_brush()
+        # self.parent.action_buttons.activate_brush()
+        self.parent.event_generate('<<activate_brush>>')
         red = COLOR_RANGE[int(self.red_slider.get())]
         green = COLOR_RANGE[int(self.green_slider.get())]
         blue = COLOR_RANGE[int(self.blue_slider.get())]
@@ -97,15 +120,18 @@ class BrushPreview(ctk.CTkCanvas):
         self.brush_size_var = brush_size_var
         self.brush_is_on = brush_is_on
 
+        self.brush_size_var.trace('w', self.draw_circle)
+        self.color_string.trace('w', self.draw_circle)
+
         self.draw_circle()
 
     def draw_circle(self, *args):
         if self.brush_is_on.get():
             color = self.color_string.get()
-            width=0
+            width = 0
         else:
             color = BRUSH_PREVIEW_BG
-            width=1
+            width = 1
 
         self.delete('all')
         r = int(self.brush_size_var.get() * 0.7 // 2)
@@ -115,11 +141,15 @@ class BrushPreview(ctk.CTkCanvas):
 
 
 class ColorButtons(ctk.CTkFrame):
-    def __init__(self, parent, color_string, color_slides):
+    def __init__(self, parent, color_string, red_var, green_var, blue_var):
         super().__init__(master=parent)
         self.grid(row=1, column=0, columnspan=2, padx=5, pady=5)
         self.color_string = color_string
-        self.color_slides = color_slides
+
+        self.red_var = red_var
+        self.green_var = green_var
+        self.blue_var = blue_var
+
         self.parent = parent
         # Create layout
         self.create_layout()
@@ -143,7 +173,8 @@ class ColorButtons(ctk.CTkFrame):
                                                                                         sticky='news')
 
     def change_color(self, color):
-        self.parent.action_buttons.activate_brush()
+        # self.parent.action_buttons.activate_brush()
+        self.parent.event_generate('<<activate_brush>>')
 
         self.color_string.set(color)
 
@@ -151,9 +182,9 @@ class ColorButtons(ctk.CTkFrame):
         green = COLOR_RANGE.index(color[2])
         blue = COLOR_RANGE.index(color[3])
 
-        self.color_slides.red_var.set(red)
-        self.color_slides.green_var.set(green)
-        self.color_slides.blue_var.set(blue)
+        self.red_var.set(red)
+        self.green_var.set(green)
+        self.blue_var.set(blue)
 
 
 class BrushSizeSlider(ctk.CTkFrame):
@@ -171,12 +202,14 @@ class BrushSizeSlider(ctk.CTkFrame):
 
 
 class ActionButtons(ctk.CTkFrame):
-    def __init__(self, parent, draw_surface, brush_is_on, color_string):
+    def __init__(self, parent, brush_is_on, color_string):
         super().__init__(master=parent, fg_color='transparent')
-        self.draw_surface = draw_surface
+        # self.draw_surface = draw_surface
         self.brush_is_on = brush_is_on
         self.color_string = color_string
+        self.parent = parent
         self.last_color = None
+        parent.bind('<<activate_brush>>', lambda e: self.activate_brush())
 
         self.grid(row=3, column=0, columnspan=2, sticky='news', padx=5, pady=5)
 
@@ -223,5 +256,5 @@ class ActionButtons(ctk.CTkFrame):
             self.color_string.set(CANVAS_BG)
 
     def clear_canvas(self):
-        self.draw_surface.clear_screen()
+        self.event_generate('<<ClearCanvas>>')
         self.activate_brush()
