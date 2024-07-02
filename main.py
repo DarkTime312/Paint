@@ -7,7 +7,7 @@ class Paint(ctk.CTk):
     def __init__(self):
         super().__init__()
 
-        # setting light mode
+        # Forcing light theme
         ctk.set_appearance_mode('light')
         # window setup
         self.geometry('800x600+200+200')
@@ -19,6 +19,7 @@ class Paint(ctk.CTk):
         self.color_string = ctk.StringVar(value='#000')
         self.is_brush_active = ctk.BooleanVar(value=True)
 
+        # Bind the mouse wheel to the brush size slider
         self.bind('<MouseWheel>', self.change_brush_size)
 
         DrawSurface(self,

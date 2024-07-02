@@ -8,9 +8,9 @@ class DrawSurface(ctk.CTkCanvas):
         super().__init__(master=parent,
                          bg=CANVAS_BG,
                          borderwidth=0,
-                         highlightthickness=0)
+                         highlightthickness=0,
+                         relief='ridge')
 
-        self.parent = parent
         self.brush_size_var = brush_size_var
         self.color_string = color_string
 

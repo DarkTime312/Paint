@@ -8,17 +8,20 @@ class ToolPanel(ctk.CTkToplevel):
         super().__init__(master=parent)
         self.parent = parent
 
+        # Forcing light theme
+        ctk.set_appearance_mode('light')
+
         # window setup
         self.geometry('200x300+1020+200')
         self.title('')
         self.attributes('-topmost', True)
         self.resizable(False, False)
 
+        # Had to change the TopLevel icon with a delay because of a bug
+        self.after(200, lambda: self.iconbitmap('empty.ico'))
+
         # A binding to close the main app if the ToolPanel is closed
         self.bind("<Destroy>", lambda e: self.quit())
-
-        # setting light mode
-        ctk.set_appearance_mode('light')
 
         # Creating color variables
         self.red_var = ctk.IntVar()
