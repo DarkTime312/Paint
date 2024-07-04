@@ -121,22 +121,28 @@ class BrushPreview(ctk.CTkCanvas):
     def __init__(self, parent, brush_size_var, color_string, brush_is_on):
         super().__init__(master=parent,
                          width=90,
-                         height=75,
+                         height=90,
                          bg=BRUSH_PREVIEW_BG,
                          borderwidth=0,
                          highlightthickness=0)
+
         self.color_string = color_string
         self.brush_size_var = brush_size_var
         self.brush_is_on = brush_is_on
 
         self.grid(row=0, column=1, sticky='w')
 
-        self.brush_size_var.trace('w', self.draw_circle)
-        self.color_string.trace('w', self.draw_circle)
+        self.brush_size_var.trace('w', self.draw_preview_circle)
+        self.color_string.trace('w', self.draw_preview_circle)
 
-        self.draw_circle()
+        # Finding the coordinates to center of the canvas
+        self.x = 90 // 2
+        self.y = 90 // 2
+        self.max_length = 45
 
-    def draw_circle(self, *args) -> None:
+        self.draw_preview_circle()
+
+    def draw_preview_circle(self, *args) -> None:
         if self.brush_is_on.get():
             color: str = self.color_string.get()
             width: int = 0
@@ -145,10 +151,8 @@ class BrushPreview(ctk.CTkCanvas):
             width: int = 1
 
         self.delete('all')
-        r: int = int(self.brush_size_var.get() * 0.7 // 2)
-        # x and y for center of oval
-        x, y = 35, 35
-        self.create_oval(x - r, y - r, x + r, y + r, width=width, fill=color)
+        radius = int(self.max_length * self.brush_size_var.get() / 100)
+        self.create_oval(self.x - radius, self.y - radius, self.x + radius, self.y + radius, width=width, fill=color)
 
 
 class ColorButtons(ctk.CTkFrame):

@@ -9,7 +9,7 @@ class DrawSurface(ctk.CTkCanvas):
                          bg=CANVAS_BG,
                          borderwidth=0,
                          highlightthickness=0,
-                         relief='ridge')
+                         )
 
         self.brush_size_var = brush_size_var
         self.color_string = color_string
