@@ -4,10 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b805b5b3-200b-4068-b456-aeded4969c59" name="Changes" comment="">
+    <list default="true" id="b805b5b3-200b-4068-b456-aeded4969c59" name="Changes" comment="1.0">
+      <change afterPath="$PROJECT_DIR$/Pyside_version/assets/brush.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Pyside_version/assets/clear.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Pyside_version/assets/empty.ico" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Pyside_version/assets/eraser.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Pyside_version/controller.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Pyside_version/interface.ui" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Pyside_version/main.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Pyside_version/model.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Pyside_version/utils.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Pyside_version/view.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/Paint.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Paint.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/draw_surface.py" beforeDir="false" afterPath="$PROJECT_DIR$/draw_surface.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tool_panel.py" beforeDir="false" afterPath="$PROJECT_DIR$/tool_panel.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -25,6 +35,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;DarkTime312&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/DarkTime312/Paint.git&quot;,
+    &quot;accountId&quot;: &quot;3b106155-d0f4-4f0e-83b8-d21b85da5a72&quot;
+  }
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 4
 }</component>
@@ -34,20 +56,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Python.draw_surface.executor&quot;: &quot;Run&quot;,
-    &quot;Python.main.executor&quot;: &quot;Run&quot;,
-    &quot;Python.tool_panel.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Mohammad/Documents/Mnitors/My_script/Paint&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;advanced.settings&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Python.draw_surface.executor": "Run",
+    "Python.main.executor": "Run",
+    "Python.tool_panel.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "F:/Last Windwos(2024)/0 - All the files/Documents/Mnitors/My_script/Paint/Pyside_version/assets",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="F:\Last Windwos(2024)\0 - All the files\Documents\Mnitors\My_script\Paint\Pyside_version\assets" />
       <recent name="C:\Users\Mohammad\Documents\Mnitors\My_script\Paint" />
     </key>
   </component>
@@ -129,7 +152,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-python-sdk-7a29c1521ef0-d3b881c8e49f-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-233.11799.298" />
+        <option value="bundled-python-sdk-975db3bf15a3-31b6be0877a2-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-241.18034.82" />
       </set>
     </attachedChunks>
   </component>
@@ -230,7 +253,15 @@
       <option name="project" value="LOCAL" />
       <updated>1720054105370</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="1.0">
+      <option name="closed" value="true" />
+      <created>1720102242822</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1720102242822</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -244,6 +275,7 @@
     <MESSAGE value="0.7.2" />
     <MESSAGE value="0.7.3" />
     <MESSAGE value="0.7.4" />
-    <option name="LAST_COMMIT_MESSAGE" value="0.7.4" />
+    <MESSAGE value="1.0" />
+    <option name="LAST_COMMIT_MESSAGE" value="1.0" />
   </component>
 </project>

@@ -360,7 +360,7 @@ class ActionButtons(ctk.CTkFrame):
         self.eraser_button.pack(side='left', padx=5)
 
         # Create clear canvas button
-        Button(self, image='images/brush.png', command=self.clear_canvas).pack(side='right', padx=(5, 0))
+        Button(self, image='images/clear.png', command=self.clear_canvas).pack(side='right', padx=(5, 0))
 
         # Activate brush on first run
         self.activate_brush()
