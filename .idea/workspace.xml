@@ -5,12 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b805b5b3-200b-4068-b456-aeded4969c59" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Pyside_version/interface_ui.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Pyside_version/resources.qrc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Pyside_version/resources_rc.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Pyside_version/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Pyside_version/controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/Pyside_version/controller.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pyside_version/interface.ui" beforeDir="false" afterPath="$PROJECT_DIR$/Pyside_version/interface.ui" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pyside_version/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/Pyside_version/model.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Pyside_version/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/Pyside_version/utils.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Pyside_version/view.py" beforeDir="false" afterPath="$PROJECT_DIR$/Pyside_version/view.py" afterDir="false" />
     </list>
@@ -60,12 +58,13 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "master",
-    "last_opened_file_path": "C:/Users/rozes/PycharmProjects/RandomCrap",
+    "last_opened_file_path": "F:/Last Windwos(2024)/0 - All the files/Documents/Mnitors/My_script/Paint/Pyside_version",
     "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="F:\Last Windwos(2024)\0 - All the files\Documents\Mnitors\My_script\Paint\Pyside_version" />
       <recent name="F:\Last Windwos(2024)\0 - All the files\Documents\Mnitors\My_script\Paint\Pyside_version\assets" />
       <recent name="C:\Users\Mohammad\Documents\Mnitors\My_script\Paint" />
     </key>
@@ -327,7 +326,15 @@
       <option name="project" value="LOCAL" />
       <updated>1724503579507</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="pyside v0.6">
+      <option name="closed" value="true" />
+      <created>1724505957607</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1724505957607</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -345,6 +352,7 @@
     <MESSAGE value="pyside version started" />
     <MESSAGE value="pyside v0.1" />
     <MESSAGE value="pyside v0.5" />
-    <option name="LAST_COMMIT_MESSAGE" value="pyside v0.5" />
+    <MESSAGE value="pyside v0.6" />
+    <option name="LAST_COMMIT_MESSAGE" value="pyside v0.6" />
   </component>
 </project>

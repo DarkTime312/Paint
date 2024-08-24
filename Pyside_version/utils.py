@@ -1,11 +1,9 @@
-import sys
+from PySide6.QtCore import Qt, QRectF, Signal
+from PySide6.QtGui import QPainter
+from PySide6.QtWidgets import QWidget, QApplication, QGraphicsView
 
-from PySide6.QtGui import QPixmap, QPainter, QPen, QColor, QBrush, QPalette
-
-from settings import *
-from PySide6.QtCore import Qt, QPoint, QRectF, Signal
-from PySide6.QtWidgets import QWidget, QApplication, QPushButton, QGraphicsView
 from interface_ui import Ui_ToolPanel
+from settings import *
 
 
 class ToolPanel(QWidget):
@@ -16,16 +14,16 @@ class ToolPanel(QWidget):
         self.ui.setupUi(self)
         self.setGeometry(1020, 200, 200, 350)
         self.setWindowTitle(' ')
+        # Make the tool panel to be always on top
         self.setWindowFlags(self.windowFlags() | Qt.WindowType.WindowStaysOnTopHint)
         self.palette_setup()
         self.show()
-        # self.draw_brush_preview(20)
 
     def palette_setup(self):
         grid_layout = self.ui.frm_palette.layout()
         # add colors to the buttons
-        for row in range(6):
-            for col in range(4):
+        for row in range(COLOR_ROWS):
+            for col in range(COLOR_COLS):
                 button = grid_layout.itemAtPosition(row, col).widget()
                 button.setStyleSheet(f"background-color: #{COLORS[row][col]}")
 
@@ -41,11 +39,8 @@ class Canvas(QGraphicsView):
     def __init__(self, scene):
         super().__init__(scene)
         self.setRenderHint(QPainter.RenderHint.Antialiasing)
-        self.setHorizontalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
-        self.setVerticalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
 
     def mouseMoveEvent(self, event):
-        # Emit the signal with the event
         self.mouse_moved.emit(event)
 
     def mouseReleaseEvent(self, event):
