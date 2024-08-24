@@ -4,21 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b805b5b3-200b-4068-b456-aeded4969c59" name="Changes" comment="1.0">
-      <change afterPath="$PROJECT_DIR$/Pyside_version/assets/brush.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Pyside_version/assets/clear.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Pyside_version/assets/empty.ico" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Pyside_version/assets/eraser.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Pyside_version/controller.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Pyside_version/interface.ui" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Pyside_version/main.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Pyside_version/model.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Pyside_version/utils.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Pyside_version/view.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Paint.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Paint.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="b805b5b3-200b-4068-b456-aeded4969c59" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tool_panel.py" beforeDir="false" afterPath="$PROJECT_DIR$/tool_panel.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pyside_version/controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/Pyside_version/controller.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pyside_version/interface.ui" beforeDir="false" afterPath="$PROJECT_DIR$/Pyside_version/interface.ui" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pyside_version/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Pyside_version/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pyside_version/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/Pyside_version/model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pyside_version/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/Pyside_version/utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pyside_version/view.py" beforeDir="false" afterPath="$PROJECT_DIR$/Pyside_version/view.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,6 +52,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Python.draw_surface.executor": "Run",
+    "Python.main (1).executor": "Run",
     "Python.main.executor": "Run",
     "Python.tool_panel.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
@@ -74,7 +68,7 @@
       <recent name="C:\Users\Mohammad\Documents\Mnitors\My_script\Paint" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.main">
+  <component name="RunManager" selected="Python.main (1)">
     <configuration name="draw_surface" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Paint" />
       <option name="ENV_FILES" value="" />
@@ -89,6 +83,28 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/draw_surface.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="main (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Paint" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Pyside_version" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Pyside_version/main.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -143,6 +159,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.main (1)" />
         <item itemvalue="Python.main" />
         <item itemvalue="Python.draw_surface" />
         <item itemvalue="Python.tool_panel" />
@@ -261,7 +278,15 @@
       <option name="project" value="LOCAL" />
       <updated>1720102242822</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="pyside version started">
+      <option name="closed" value="true" />
+      <created>1724442818935</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1724442818935</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -276,6 +301,7 @@
     <MESSAGE value="0.7.3" />
     <MESSAGE value="0.7.4" />
     <MESSAGE value="1.0" />
-    <option name="LAST_COMMIT_MESSAGE" value="1.0" />
+    <MESSAGE value="pyside version started" />
+    <option name="LAST_COMMIT_MESSAGE" value="pyside version started" />
   </component>
 </project>
