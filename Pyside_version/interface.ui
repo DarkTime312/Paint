@@ -1157,6 +1157,15 @@ QSlider#slider_brush_size {
              </color>
             </brush>
            </colorrole>
+           <colorrole role="Accent">
+            <brush brushstyle="SolidPattern">
+             <color alpha="255">
+              <red>0</red>
+              <green>0</green>
+              <blue>0</blue>
+             </color>
+            </brush>
+           </colorrole>
           </active>
           <inactive>
            <colorrole role="Button">
@@ -1180,6 +1189,15 @@ QSlider#slider_brush_size {
            <colorrole role="Window">
             <brush brushstyle="SolidPattern">
              <color alpha="0">
+              <red>0</red>
+              <green>0</green>
+              <blue>0</blue>
+             </color>
+            </brush>
+           </colorrole>
+           <colorrole role="Accent">
+            <brush brushstyle="SolidPattern">
+             <color alpha="255">
               <red>0</red>
               <green>0</green>
               <blue>0</blue>
@@ -1215,6 +1233,15 @@ QSlider#slider_brush_size {
              </color>
             </brush>
            </colorrole>
+           <colorrole role="Accent">
+            <brush brushstyle="SolidPattern">
+             <color alpha="255">
+              <red>0</red>
+              <green>0</green>
+              <blue>0</blue>
+             </color>
+            </brush>
+           </colorrole>
           </disabled>
          </palette>
         </property>
@@ -1222,7 +1249,7 @@ QSlider#slider_brush_size {
          <cursorShape>PointingHandCursor</cursorShape>
         </property>
         <property name="autoFillBackground">
-         <bool>false</bool>
+         <bool>true</bool>
         </property>
         <property name="minimum">
          <number>20</number>

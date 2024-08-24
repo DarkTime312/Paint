@@ -42,6 +42,8 @@ class PaintController:
         self.view.canvas.mouse_pressed.connect(self.handle_mouse_pressed)
         self.view.canvas.mouse_moved.connect(self.handle_mouse_movement)
         self.view.canvas.mouse_released.connect(self.handle_mouse_released)
+        self.view.tool_panel.ui.btn_clear.clicked.connect(self.clear_canvas)
+        self.view.tool_panel.ui.btn_eraser.toggled.connect(self.activate_eraser)
 
     def handle_mouse_pressed(self, event):
         # if self.last_x and self.last_y:
@@ -76,12 +78,35 @@ class PaintController:
         self.last_x = None
         self.last_y = None
 
+    def clear_canvas(self):
+        self.view.clear_canvas()
+
+    def activate_eraser(self, eraser_is_active):
+        """Activate eraser mode and set color to canvas background."""
+        if eraser_is_active:
+            self.pen.setColor("#f3f3f3")
+            self.view.set_eraser_mode(True)
+        else:
+            self.pen.setColor(self.model.get_brush_color())
+            self.view.set_eraser_mode(False)
+        self.view.draw_brush_preview(self.model.get_brush_size(),
+                                     self.model.get_brush_color())
+
+        # self.is_brush_active.set(False)
+        # # Change the eraser button color to active color
+        # self.mark_as_active()
+        # # Save the color
+        # self.last_color = self.color_string.get()
+        # # Change the brush color to the background color
+        # self.color_string.set(CANVAS_BG)
+
     def change_brush_color(self, color: str):
         self.pen.setColor(QColor(color))
         self.update_rgb_sliders(color)
         self.model.set_brush_color(color)
         brush_size = self.model.get_brush_size()
         self.view.update_brush(brush_size, color)
+        self.view.update_slider_accent_color(color)
 
     def change_brush_size(self, size: int):
         self.pen.setWidth(size)

@@ -48,22 +48,6 @@ class Canvas(QGraphicsView):
         # Emit the signal with the event
         self.mouse_moved.emit(event)
 
-        # # print('mouse moved')
-        # pos = event.position()
-        # # print(pos)
-        # # super().mouseMoveEvent(event)  # Call the base class implementation
-        #
-        # if self.last_x is None:  # First event.
-        #     self.last_x = pos.x()
-        #     self.last_y = pos.y()
-        #     return  # Ignore the first time.
-        # self.scene().addLine(self.last_x, self.last_y, pos.x(), pos.y())
-        #
-        # # Update the origin for next time.
-        #
-        # self.last_x = pos.x()
-        # self.last_y = pos.y()
-
     def mouseReleaseEvent(self, event):
         self.mouse_released.emit(event)
 
