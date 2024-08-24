@@ -3,8 +3,8 @@ import sys
 from PySide6.QtGui import QPixmap, QPainter, QPen, QColor, QBrush, QPalette
 
 from settings import *
-from PySide6.QtCore import Qt, QPoint
-from PySide6.QtWidgets import QWidget, QApplication, QPushButton
+from PySide6.QtCore import Qt, QPoint, QRectF, Signal
+from PySide6.QtWidgets import QWidget, QApplication, QPushButton, QGraphicsView
 from interface_ui import Ui_ToolPanel
 
 
@@ -18,6 +18,7 @@ class ToolPanel(QWidget):
         self.setWindowTitle(' ')
         self.setWindowFlags(self.windowFlags() | Qt.WindowType.WindowStaysOnTopHint)
         self.palette_setup()
+        self.show()
         # self.draw_brush_preview(20)
 
     def palette_setup(self):
@@ -28,19 +29,48 @@ class ToolPanel(QWidget):
                 button = grid_layout.itemAtPosition(row, col).widget()
                 button.setStyleSheet(f"background-color: #{COLORS[row][col]}")
 
-    def draw_brush_preview(self, brush_size: int, brush_color: str):
-        self.ui.lbl_preview.setFixedSize(102, 102)
-        pixmap = QPixmap(102, 102)
-        pixmap.fill(Qt.GlobalColor.transparent)
-        painter = QPainter(pixmap)
-        painter.setRenderHints(QPainter.RenderHint.Antialiasing)
-        painter.setPen(Qt.PenStyle.NoPen)
-        painter.setBrush(QBrush(QColor(brush_color), Qt.BrushStyle.SolidPattern))
-        radii = brush_size / 2
-        painter.drawEllipse(QPoint(51, 51), radii, radii)
-        painter.end()
-
-        self.ui.lbl_preview.setPixmap(pixmap)
-
     def closeEvent(self, event):
         QApplication.instance().quit()
+
+
+class Canvas(QGraphicsView):
+    mouse_pressed = Signal(object)
+    mouse_moved = Signal(object)
+    mouse_released = Signal(object)
+
+    def __init__(self, scene):
+        super().__init__(scene)
+        self.setRenderHint(QPainter.RenderHint.Antialiasing)
+        self.setHorizontalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
+        self.setVerticalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
+
+    def mouseMoveEvent(self, event):
+        # Emit the signal with the event
+        self.mouse_moved.emit(event)
+
+        # # print('mouse moved')
+        # pos = event.position()
+        # # print(pos)
+        # # super().mouseMoveEvent(event)  # Call the base class implementation
+        #
+        # if self.last_x is None:  # First event.
+        #     self.last_x = pos.x()
+        #     self.last_y = pos.y()
+        #     return  # Ignore the first time.
+        # self.scene().addLine(self.last_x, self.last_y, pos.x(), pos.y())
+        #
+        # # Update the origin for next time.
+        #
+        # self.last_x = pos.x()
+        # self.last_y = pos.y()
+
+    def mouseReleaseEvent(self, event):
+        self.mouse_released.emit(event)
+
+    def mousePressEvent(self, event):
+        self.mouse_pressed.emit(event)
+
+    def resizeEvent(self, event):
+        # Resize the scene to match the view
+        self.setSceneRect(QRectF(self.viewport().rect()))
+        super().resizeEvent(event)

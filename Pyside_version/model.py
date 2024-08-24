@@ -11,11 +11,13 @@ class RgbColor(NamedTuple):
 
 class PaintModel:
     def __init__(self):
-        self.brush_color = 'white'
-        self.brush_size = 20
+        self.brush_color = None
+        self.brush_size = None
         self.red = None
         self.blue = None
         self.green = None
+        self.is_brush_active = True
+        self.last_x, self.last_y = None, None
 
     def set_brush_color(self, color: str):
         self.brush_color = color

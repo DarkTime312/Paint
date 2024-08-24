@@ -1,15 +1,34 @@
+from PySide6.QtCore import QLine, QLineF
+from PySide6.QtGui import QPen, QColor, Qt
 from PySide6.QtWidgets import QPushButton
 from functools import partial
 
 from view import PaintView
 from model import PaintModel
 
+STARTING_COLOR = '#000'
+STARTING_BRUSH_SIZE = 20
+
 
 class PaintController:
     def __init__(self):
+        self.last_x = None
+        self.last_y = None
         self.view = PaintView()
         self.model = PaintModel()
         self.add_functionality()
+        self.initialize()
+
+    def initialize(self):
+        self.model.set_brush_color(STARTING_COLOR)
+        self.model.set_brush_size(STARTING_BRUSH_SIZE)
+
+        # Create pen object with default color and size
+        self.pen = QPen(QColor(self.model.get_brush_color()),
+                        self.model.get_brush_size())
+
+        self.pen.setCapStyle(Qt.PenCapStyle.RoundCap)
+        self.view.draw_brush_preview(self.model.get_brush_size(), self.model.get_brush_color())
 
     def add_functionality(self):
         for btn in self.view.tool_panel.ui.frm_palette.findChildren(QPushButton):
@@ -20,13 +39,53 @@ class PaintController:
         self.view.tool_panel.ui.slider_green.valueChanged.connect(self.rgb_slider_moved)
         self.view.tool_panel.ui.slider_blue.valueChanged.connect(self.rgb_slider_moved)
 
+        self.view.canvas.mouse_pressed.connect(self.handle_mouse_pressed)
+        self.view.canvas.mouse_moved.connect(self.handle_mouse_movement)
+        self.view.canvas.mouse_released.connect(self.handle_mouse_released)
+
+    def handle_mouse_pressed(self, event):
+        # if self.last_x and self.last_y:
+        current_position = event.pos()
+        self.view.draw_line(
+            QLine(current_position.x(),
+                  current_position.y(),
+                  current_position.x() + 1,
+                  current_position.y() + 1
+                  ), self.pen
+        )
+
+    def handle_mouse_movement(self, event):
+        current_position = event.pos()
+
+        if self.last_x and self.last_y:
+            # Draw a line from the last position to the current position
+            self.view.draw_line(
+                QLine(self.last_x,
+                      self.last_y,
+                      current_position.x(),
+                      current_position.y()
+                      ), self.pen
+            )
+
+        # Update the last position
+        self.last_x = current_position.x()
+        self.last_y = current_position.y()
+
+    def handle_mouse_released(self, event):
+        # Reset the last position
+        self.last_x = None
+        self.last_y = None
+
     def change_brush_color(self, color: str):
+        self.pen.setColor(QColor(color))
         self.update_rgb_sliders(color)
         self.model.set_brush_color(color)
         brush_size = self.model.get_brush_size()
         self.view.update_brush(brush_size, color)
 
     def change_brush_size(self, size: int):
+        self.pen.setWidth(size)
+
         self.model.set_brush_size(size)
         brush_color = self.model.get_brush_color()
         self.view.update_brush(size, brush_color)
@@ -37,4 +96,5 @@ class PaintController:
 
     def rgb_slider_moved(self):
         hex_color = self.model.convert_rgb_to_hex(*self.view.get_rgb_sliders_values())
-        self.view.update_brush(self.model.get_brush_size(), hex_color)
+        self.change_brush_color(hex_color)
+        # self.view.update_brush(self.model.get_brush_size(), hex_color)

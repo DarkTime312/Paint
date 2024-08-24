@@ -7,8 +7,6 @@
     <list default="true" id="b805b5b3-200b-4068-b456-aeded4969c59" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Pyside_version/controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/Pyside_version/controller.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pyside_version/interface.ui" beforeDir="false" afterPath="$PROJECT_DIR$/Pyside_version/interface.ui" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pyside_version/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Pyside_version/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Pyside_version/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/Pyside_version/model.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Pyside_version/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/Pyside_version/utils.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Pyside_version/view.py" beforeDir="false" afterPath="$PROJECT_DIR$/Pyside_version/view.py" afterDir="false" />
@@ -58,7 +56,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "master",
-    "last_opened_file_path": "F:/Last Windwos(2024)/0 - All the files/Documents/Mnitors/My_script/Paint/Pyside_version/assets",
+    "last_opened_file_path": "C:/Users/rozes/PycharmProjects/RandomCrap",
     "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
   }
 }]]></component>
@@ -286,7 +284,15 @@
       <option name="project" value="LOCAL" />
       <updated>1724442818935</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="pyside v0.1">
+      <option name="closed" value="true" />
+      <created>1724487136725</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1724487136726</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -302,6 +308,7 @@
     <MESSAGE value="0.7.4" />
     <MESSAGE value="1.0" />
     <MESSAGE value="pyside version started" />
-    <option name="LAST_COMMIT_MESSAGE" value="pyside version started" />
+    <MESSAGE value="pyside v0.1" />
+    <option name="LAST_COMMIT_MESSAGE" value="pyside v0.1" />
   </component>
 </project>

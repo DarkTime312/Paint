@@ -1,7 +1,8 @@
-from PySide6.QtGui import QIcon
-from PySide6.QtWidgets import QWidget, QApplication
+from PySide6.QtCore import Qt, QPoint, QLine
+from PySide6.QtGui import QIcon, QPixmap, QPainter, QBrush, QColor, QPen
+from PySide6.QtWidgets import QWidget, QApplication, QGraphicsScene, QVBoxLayout
 import resources_rc
-from utils import ToolPanel
+from utils import ToolPanel, Canvas
 
 
 class PaintView(QWidget):
@@ -12,13 +13,54 @@ class PaintView(QWidget):
         self.setWindowIcon(QIcon(":assets/empty.ico"))
 
         self.tool_panel = ToolPanel()
-        self.tool_panel.show()
+        # Create a QGraphicsScene
+        self.scene = QGraphicsScene()
+
+        # Create a Canvas (QGraphicsView)
+        self.canvas = Canvas(self.scene)
+
+        # Add some example items to the scene
+        # self.scene.addRect(10, 10, 100, 100)
+        # self.scene.addEllipse(150, 150, 100, 100)
+        # Create a QPen with a round cap style
+
+        # self.scene.addLine(10, 10, 200, 200, pen)
+
+        # Set up the layout
+        layout = QVBoxLayout(self)
+        layout.addWidget(self.canvas)
+
+    def draw_line(self, line: QLine, pen: QPen):
+        self.scene.addLine(line, pen)
 
     def closeEvent(self, event):
         QApplication.instance().quit()
 
+    def wheelEvent(self, event):
+        # Check the direction of the wheel movement
+        current_size = self.get_brush_size()
+
+        if event.angleDelta().y() > 0:
+            self.set_brush_size(min(100, current_size + 5))
+        else:
+            self.set_brush_size(max(20, current_size - 5))
+
+    def draw_brush_preview(self, brush_size: int, brush_color: str):
+        self.tool_panel.ui.lbl_preview.setFixedSize(102, 102)
+        pixmap = QPixmap(102, 102)
+        pixmap.fill(Qt.GlobalColor.transparent)
+        painter = QPainter(pixmap)
+        painter.setRenderHints(QPainter.RenderHint.Antialiasing)
+        painter.setPen(Qt.PenStyle.NoPen)
+        painter.setBrush(QBrush(QColor(brush_color), Qt.BrushStyle.SolidPattern))
+        radii = brush_size / 2
+        painter.drawEllipse(QPoint(51, 51), radii, radii)
+        painter.end()
+
+        self.tool_panel.ui.lbl_preview.setPixmap(pixmap)
+
     def update_brush(self, brush_size: int, color: str):
-        self.tool_panel.draw_brush_preview(brush_size, color)
+        self.draw_brush_preview(brush_size, color)
 
     def update_rgb_sliders(self, r: int, g: int, b: int):
         self.tool_panel.ui.slider_red.setValue(r)
@@ -30,3 +72,9 @@ class PaintView(QWidget):
         green = self.tool_panel.ui.slider_green.value()
         blue = self.tool_panel.ui.slider_blue.value()
         return red, green, blue
+
+    def get_brush_size(self):
+        return self.tool_panel.ui.slider_brush_size.value()
+
+    def set_brush_size(self, value):
+        self.tool_panel.ui.slider_brush_size.setValue(value)
